@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="CatalogService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Interactions_Header" EntityType="CatalogService.Interactions_Header"/>
+                <EntitySet Name="Interactions_Items" EntityType="CatalogService.Interactions_Items"/>
+                <EntitySet Name="Interactions_Student" EntityType="CatalogService.Interactions_Student"/>
+                <EntitySet Name="Interactions_Employee" EntityType="CatalogService.Interactions_Employee"/>
+                <EntitySet Name="Interactions_Student_data" EntityType="CatalogService.Interactions_Student_data"/>
+                <EntitySet Name="Interactions_Student_marks" EntityType="CatalogService.Interactions_Student_marks"/>
+                <EntitySet Name="OuterJoin" EntityType="CatalogService.OuterJoin"/>
+                <EntitySet Name="InnerJoin" EntityType="CatalogService.InnerJoin"/>
+                <EntitySet Name="Options" EntityType="CatalogService.Options"/>
+                <EntitySet Name="Unique_ID_Header1" EntityType="CatalogService.Unique_ID_Header1"/>
+                <EntitySet Name="Unique_ID_ITEM1" EntityType="CatalogService.Unique_ID_ITEM1"/>
+                <EntitySet Name="CHAR_NUMVAL1" EntityType="CatalogService.CHAR_NUMVAL1"/>
+                <EntitySet Name="ORDERS" EntityType="CatalogService.ORDERS"/>
+                <EntitySet Name="CP_STAT_METHOD1" EntityType="CatalogService.CP_STAT_METHOD1"/>
+                <EntitySet Name="CP_STAT_METHOD_VAL1" EntityType="CatalogService.CP_STAT_METHOD_VAL1"/>
+                <EntitySet Name="CP_STAT_PROFILE1" EntityType="CatalogService.CP_STAT_PROFILE1"/>
+                <EntitySet Name="CP_STAT_PROFILE_VAL1" EntityType="CatalogService.CP_STAT_PROFILE_VAL1"/>
+                <EntitySet Name="CP_BOOK" EntityType="CatalogService.CP_BOOK"/>
+                <EntitySet Name="SBP_EMPLOY" EntityType="CatalogService.SBP_EMPLOY"/>
+                <EntitySet Name="LOCATION_STANDBY" EntityType="CatalogService.LOCATION_STANDBY"/>
+                <EntitySet Name="LOCATION1" EntityType="CatalogService.LOCATION1"/>
+                <EntitySet Name="LOCATION_IBP" EntityType="CatalogService.LOCATION_IBP"/>
+                <EntitySet Name="PRODUCT_SRV" EntityType="CatalogService.PRODUCT_SRV"/>
+                <EntitySet Name="SALES_SRV" EntityType="CatalogService.SALES_SRV"/>
+                <EntitySet Name="INTERFACE_TABLE" EntityType="CatalogService.INTERFACE_TABLE"/>
+                <EntitySet Name="CONFIG_INT_TAB" EntityType="CatalogService.CONFIG_INT_TAB"/>
+                <EntitySet Name="Countries" EntityType="CatalogService.Countries"/>
+                <EntitySet Name="Countries_texts" EntityType="CatalogService.Countries_texts"/>
+                <FunctionImport Name="stud_data" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="FLAG" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="Data" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="seed_order" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="FLAG" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="Data" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="profile" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="FLAG" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="Data" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="CP_BOOK1" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="FLAG" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="Data" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="cre" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="FLAG" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="Data" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="tree" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="FLAG" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="Data" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <AssociationSet Name="Interactions_Header_BPCOUNTRY" Association="CatalogService.Interactions_Header_BPCOUNTRY">
+                    <End Role="Interactions_Header" EntitySet="Interactions_Header"/>
+                    <End Role="Countries" EntitySet="Countries"/>
+                </AssociationSet>
+                <AssociationSet Name="Interactions_Items_INTHeader" Association="CatalogService.Interactions_Items_INTHeader">
+                    <End Role="Interactions_Items" EntitySet="Interactions_Items"/>
+                    <End Role="Interactions_Header" EntitySet="Interactions_Header"/>
+                </AssociationSet>
+                <AssociationSet Name="Countries_texts_1" Association="CatalogService.Countries_texts_1">
+                    <End Role="Countries" EntitySet="Countries"/>
+                    <End Role="Countries_texts" EntitySet="Countries_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="Countries_localized" Association="CatalogService.Countries_localized">
+                    <End Role="Countries" EntitySet="Countries"/>
+                    <End Role="Countries_texts" EntitySet="Countries_texts"/>
+                </AssociationSet>
+            </EntityContainer>
+            <EntityType Name="Interactions_Header">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <NavigationProperty Name="ITEMS" Relationship="CatalogService.Interactions_Items_INTHeader" FromRole="Interactions_Header" ToRole="Interactions_Items"/>
+                <Property Name="PARTNER" Type="Edm.String" MaxLength="10"/>
+                <Property Name="LOG_DATE" Type="Edm.DateTimeOffset"/>
+                <NavigationProperty Name="BPCOUNTRY" Relationship="CatalogService.Interactions_Header_BPCOUNTRY" FromRole="Interactions_Header" ToRole="Countries"/>
+                <Property Name="BPCOUNTRY_code" Type="Edm.String" MaxLength="3"/>
+            </EntityType>
+            <EntityType Name="Interactions_Items">
+                <Key>
+                    <PropertyRef Name="INTHeader_ID"/>
+                    <PropertyRef Name="TEXT_ID"/>
+                </Key>
+                <NavigationProperty Name="INTHeader" Relationship="CatalogService.Interactions_Items_INTHeader" FromRole="Interactions_Items" ToRole="Interactions_Header"/>
+                <Property Name="INTHeader_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="TEXT_ID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="LANGU" Type="Edm.String" MaxLength="2"/>
+                <Property Name="LOGTEXT" Type="Edm.String" MaxLength="1024"/>
+            </EntityType>
+            <EntityType Name="Interactions_Student">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="NAME" Type="Edm.String"/>
+                <Property Name="DATEOFBIRTH" Type="Edm.String"/>
+                <Property Name="CONTACT" Type="Edm.String"/>
+                <Property Name="EMAIL" Type="Edm.String"/>
+                <Property Name="ADDRESS" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="Interactions_Employee">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="NAME" Type="Edm.String"/>
+                <Property Name="DOJ" Type="Edm.String"/>
+                <Property Name="ROLE" Type="Edm.String"/>
+                <Property Name="COMPANYN" Type="Edm.String"/>
+                <Property Name="SKILLED" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="Interactions_Student_data">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="NAME" Type="Edm.String"/>
+                <Property Name="CONTACT" Type="Edm.Int64"/>
+                <Property Name="DATEOFBIRTH" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="Interactions_Student_marks">
+                <Property Name="ID" Type="Edm.Int64"/>
+                <Property Name="DATE" Type="Edm.String"/>
+                <Property Name="MARKS" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="OuterJoin">
+                <Property Name="NAME" Type="Edm.String"/>
+                <Property Name="DATE" Type="Edm.String"/>
+                <Property Name="MARKS" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="InnerJoin">
+                <Property Name="ID" Type="Edm.Int32"/>
+                <Property Name="NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="DATEOFBIRTH" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CONTACT" Type="Edm.Int64"/>
+                <Property Name="MARKS" Type="Edm.Int32"/>
+                <Property Name="DATE" Type="Edm.String" MaxLength="100"/>
+            </EntityType>
+            <EntityType Name="Options">
+                <Property Name="PRODUCT_ID" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="Unique_ID_Header1">
+                <Property Name="UNIQUE_ID" Type="Edm.Int64"/>
+                <Property Name="PRODUCT_ID" Type="Edm.String"/>
+                <Property Name="UNIQUE_DESC" Type="Edm.String"/>
+                <Property Name="UID_TYPE" Type="Edm.String"/>
+                <Property Name="ACTIVE" Type="Edm.Boolean"/>
+            </EntityType>
+            <EntityType Name="Unique_ID_ITEM1">
+                <Property Name="UNIQUE_ID" Type="Edm.Int64"/>
+                <Property Name="PRODUCT" Type="Edm.String"/>
+                <Property Name="CHAR_NUM" Type="Edm.Int64"/>
+                <Property Name="CHAR_NUMVAL" Type="Edm.String"/>
+                <Property Name="NEW_VAL" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CHAR_NUMVAL1">
+                <Property Name="CHAR_NUM" Type="Edm.Int64"/>
+                <Property Name="CHAR_NUMVAL" Type="Edm.String"/>
+                <Property Name="CHARVAL_NUM" Type="Edm.String"/>
+                <Property Name="CHAR_NUMVALDESC" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="ORDERS">
+                <Property Name="SEEDORDER" Type="Edm.String"/>
+                <Property Name="PRODUCT" Type="Edm.String"/>
+                <Property Name="UNIQUEID" Type="Edm.String"/>
+                <Property Name="ORDERQUANTITY" Type="Edm.Int64"/>
+                <Property Name="MATERIALAVAILDATE" Type="Edm.String"/>
+                <Property Name="CREADTEDDATE" Type="Edm.String"/>
+                <Property Name="CREATEDBY" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CP_STAT_METHOD1">
+                <Key>
+                    <PropertyRef Name="METHOD"/>
+                </Key>
+                <Property Name="METHOD" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="METHOD_DESC" Type="Edm.String" MaxLength="200"/>
+            </EntityType>
+            <EntityType Name="CP_STAT_METHOD_VAL1">
+                <Key>
+                    <PropertyRef Name="METHOD"/>
+                    <PropertyRef Name="PARAM"/>
+                </Key>
+                <Property Name="METHOD" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="PARAM" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="PARAM_DESC" Type="Edm.String" MaxLength="200"/>
+                <Property Name="DATATYPE" Type="Edm.String"/>
+                <Property Name="POSITION" Type="Edm.Int32"/>
+                <Property Name="DEFAULTVALUE" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CP_STAT_PROFILE1">
+                <Key>
+                    <PropertyRef Name="PROFILE"/>
+                </Key>
+                <Property Name="PROFILE" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="PRF_DESC" Type="Edm.String" MaxLength="200"/>
+                <Property Name="METHOD" Type="Edm.String" MaxLength="50"/>
+                <Property Name="CREATED_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="CREATED_BY" Type="Edm.String" MaxLength="12"/>
+            </EntityType>
+            <EntityType Name="CP_STAT_PROFILE_VAL1">
+                <Key>
+                    <PropertyRef Name="PROFILE"/>
+                    <PropertyRef Name="PARAM"/>
+                </Key>
+                <Property Name="PROFILE" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="PARAM" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="PARAM_VALUE" Type="Edm.String" MaxLength="1000"/>
+            </EntityType>
+            <EntityType Name="CP_BOOK">
+                <Key>
+                    <PropertyRef Name="BOOKID"/>
+                </Key>
+                <Property Name="BOOKID" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="BOOKNAME" Type="Edm.String"/>
+                <Property Name="BOOKAUTHOR" Type="Edm.String"/>
+                <Property Name="BOOKPUBDATE" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="SBP_EMPLOY">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false"/>
+                <Property Name="NAME" Type="Edm.String"/>
+                <Property Name="DESIGNATION" Type="Edm.String"/>
+                <Property Name="TECH_F" Type="Edm.String"/>
+                <Property Name="DOB" Type="Edm.String"/>
+                <Property Name="CONTACT" Type="Edm.String"/>
+                <Property Name="EMAIL" Type="Edm.String"/>
+                <Property Name="ADDRESS" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="LOCATION_STANDBY">
+                <Key>
+                    <PropertyRef Name="LOCATION_ID"/>
+                </Key>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LOCATION_DESC" Type="Edm.String" MaxLength="30"/>
+                <Property Name="LOCATION_TYPE" Type="Edm.String" MaxLength="1"/>
+                <Property Name="RESERVE_FIELD1" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD2" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD3" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD4" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD5" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CHANGED_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="CHANGED_TIME" Type="Edm.Time"/>
+                <Property Name="CHANGED_BY" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CREATED_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="CREATED_TIME" Type="Edm.Time"/>
+                <Property Name="CREATED_BY" Type="Edm.String" MaxLength="12"/>
+            </EntityType>
+            <EntityType Name="LOCATION1">
+                <Key>
+                    <PropertyRef Name="LOCATION_ID"/>
+                </Key>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LOCATION_DESC" Type="Edm.String" MaxLength="30"/>
+                <Property Name="LOCATION_TYPE" Type="Edm.String" MaxLength="1"/>
+                <Property Name="RESERVE_FIELD1" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD2" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD3" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD4" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD5" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CHANGED_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="CHANGED_TIME" Type="Edm.Time"/>
+                <Property Name="CHANGED_BY" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CREATED_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="CREATED_TIME" Type="Edm.Time"/>
+                <Property Name="CREATED_BY" Type="Edm.String" MaxLength="12"/>
+            </EntityType>
+            <EntityType Name="LOCATION_IBP">
+                <Key>
+                    <PropertyRef Name="LOCATION_ID"/>
+                </Key>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LOCATION_DESC" Type="Edm.String" MaxLength="30"/>
+                <Property Name="LOCATION_TYPE" Type="Edm.String" MaxLength="1"/>
+                <Property Name="RESERVE_FIELD1" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD2" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD3" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD4" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD5" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CHANGED_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="CHANGED_TIME" Type="Edm.Time"/>
+                <Property Name="CHANGED_BY" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CREATED_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="CREATED_TIME" Type="Edm.Time"/>
+                <Property Name="CREATED_BY" Type="Edm.String" MaxLength="12"/>
+            </EntityType>
+            <EntityType Name="PRODUCT_SRV">
+                <Key>
+                    <PropertyRef Name="PRODUCT_ID"/>
+                </Key>
+                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="PRODUCT_DESC" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PRODUCT_TYPE" Type="Edm.String" MaxLength="4"/>
+                <Property Name="PRODUCT_FAMILY" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PRODUCT_GROUP" Type="Edm.String" MaxLength="20"/>
+                <Property Name="PRODUCT_MODEL" Type="Edm.String" MaxLength="20"/>
+                <Property Name="PRODUCT_MODEL_RANGE" Type="Edm.String" MaxLength="20"/>
+                <Property Name="PRODUCT_SERIES" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD1" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD2" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD3" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD4" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD5" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CHANGED_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="CHANGED_TIME" Type="Edm.Time"/>
+                <Property Name="CHANGED_BY" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CREATED_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="CREATED_TIME" Type="Edm.Time"/>
+                <Property Name="CREATED_BY" Type="Edm.String" MaxLength="12"/>
+            </EntityType>
+            <EntityType Name="SALES_SRV">
+                <Key>
+                    <PropertyRef Name="SALES_DOCUMENT"/>
+                    <PropertyRef Name="SALES_DOCUMENT_ITEM"/>
+                </Key>
+                <Property Name="SALES_DOCUMENT" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="SALES_DOCUMENT_ITEM" Type="Edm.String" MaxLength="6" Nullable="false"/>
+                <Property Name="DOC_CREATED_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="SCHEDULE_LINE_NO" Type="Edm.String" MaxLength="4"/>
+                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40"/>
+                <Property Name="REASON_4REJECTION" Type="Edm.String" MaxLength="2"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="3"/>
+                <Property Name="CONFIRMED_QTY" Type="Edm.String" MaxLength="17"/>
+                <Property Name="QTY_UNITS" Type="Edm.String" MaxLength="17"/>
+                <Property Name="PROD_AVAILABILITY_DT" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="NET_VALUE" Type="Edm.String" MaxLength="21"/>
+                <Property Name="CUSTOMER_GROUP" Type="Edm.String" MaxLength="2"/>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="SALES_ORG" Type="Edm.String" MaxLength="4"/>
+                <Property Name="DISTR_CHANNEL" Type="Edm.String" MaxLength="2"/>
+                <Property Name="DIVISION" Type="Edm.String" MaxLength="2"/>
+                <Property Name="SAL_DOCU_TYPE" Type="Edm.String" MaxLength="4"/>
+                <Property Name="ITEM_CREATED_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="ITEM_CHANGE_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="OPEN_ORDER" Type="Edm.String" MaxLength="1"/>
+                <Property Name="CHARG" Type="Edm.String" MaxLength="10"/>
+                <Property Name="IBP_CUSTOMER" Type="Edm.String" MaxLength="10"/>
+                <Property Name="NOT_PLANNING" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ON_HAND_STOCK" Type="Edm.String" MaxLength="1"/>
+                <Property Name="IN_TRANSIT" Type="Edm.String" MaxLength="1"/>
+                <Property Name="SHIP_FROM_LOC" Type="Edm.String" MaxLength="4"/>
+                <Property Name="RESERVE_FIELD1" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD2" Type="Edm.String" MaxLength="20"/>
+                <Property Name="RESERVE_FIELD3" Type="Edm.String" MaxLength="20"/>
+                <Property Name="STOCK_LOC" Type="Edm.String" MaxLength="4"/>
+                <Property Name="TRANS_TO_LOC" Type="Edm.String" MaxLength="4"/>
+                <Property Name="TRANS_FROM_LOC" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CHANGED_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="CHANGED_TIME" Type="Edm.Time"/>
+                <Property Name="CHANGED_BY" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CREATED_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="CREATED_TIME" Type="Edm.Time"/>
+                <Property Name="CREATED_BY" Type="Edm.String" MaxLength="12"/>
+            </EntityType>
+            <EntityType Name="INTERFACE_TABLE">
+                <Key>
+                    <PropertyRef Name="SERVICE_ID"/>
+                </Key>
+                <Property Name="SERVICE_ID" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SERVICE_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="SERVICE_DESC" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CONFIG_INT_TAB">
+                <Key>
+                    <PropertyRef Name="SERVICE_ID"/>
+                    <PropertyRef Name="INTERFACE_TYPE"/>
+                    <PropertyRef Name="PARAMETER"/>
+                </Key>
+                <Property Name="SERVICE_ID" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="INTERFACE_TYPE" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="PARAMETER" Type="Edm.String" MaxLength="25" Nullable="false"/>
+                <Property Name="VALUE" Type="Edm.String" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="Countries">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <NavigationProperty Name="texts" Relationship="CatalogService.Countries_texts_1" FromRole="Countries" ToRole="Countries_texts"/>
+                <NavigationProperty Name="localized" Relationship="CatalogService.Countries_localized" FromRole="Countries" ToRole="Countries_texts"/>
+            </EntityType>
+            <EntityType Name="Countries_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+            </EntityType>
+            <Association Name="Interactions_Header_BPCOUNTRY">
+                <End Role="Interactions_Header" Type="CatalogService.Interactions_Header" Multiplicity="*"/>
+                <End Role="Countries" Type="CatalogService.Countries" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="Countries">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="Interactions_Header">
+                        <PropertyRef Name="BPCOUNTRY_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Interactions_Items_INTHeader">
+                <End Role="Interactions_Items" Type="CatalogService.Interactions_Items" Multiplicity="*"/>
+                <End Role="Interactions_Header" Type="CatalogService.Interactions_Header" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="Interactions_Header">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="Interactions_Items">
+                        <PropertyRef Name="INTHeader_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Countries_texts_1">
+                <End Role="Countries" Type="CatalogService.Countries" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="Countries_texts" Type="CatalogService.Countries_texts" Multiplicity="*"/>
+            </Association>
+            <Association Name="Countries_localized">
+                <End Role="Countries" Type="CatalogService.Countries" Multiplicity="*"/>
+                <End Role="Countries_texts" Type="CatalogService.Countries_texts" Multiplicity="0..1"/>
+            </Association>
+            <Annotations Target="CatalogService.Interactions_Header/BPCOUNTRY" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Country/Region"/>
+                <Annotation Term="Core.Description" String="Country/region code as specified by ISO 3166-1"/>
+            </Annotations>
+            <Annotations Target="CatalogService.Interactions_Header/BPCOUNTRY_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Country/Region"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="Country/Region"/>
+                        <PropertyValue Property="CollectionPath" String="Countries"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="BPCOUNTRY_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Core.Description" String="Country/region code as specified by ISO 3166-1"/>
+            </Annotations>
+            <Annotations Target="CatalogService.OuterJoin/NAME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="NAME"/>
+            </Annotations>
+            <Annotations Target="CatalogService.OuterJoin/DATE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="DATE"/>
+            </Annotations>
+            <Annotations Target="CatalogService.OuterJoin/MARKS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="MARKS"/>
+            </Annotations>
+            <Annotations Target="CatalogService.InnerJoin/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="ID"/>
+            </Annotations>
+            <Annotations Target="CatalogService.InnerJoin/NAME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="NAME"/>
+            </Annotations>
+            <Annotations Target="CatalogService.InnerJoin/DATEOFBIRTH" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="DATEOFBIRTH"/>
+            </Annotations>
+            <Annotations Target="CatalogService.InnerJoin/CONTACT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CONTACT"/>
+            </Annotations>
+            <Annotations Target="CatalogService.InnerJoin/MARKS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="MARKS"/>
+            </Annotations>
+            <Annotations Target="CatalogService.InnerJoin/DATE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="DATE"/>
+            </Annotations>
+            <Annotations Target="CatalogService.Options/PRODUCT_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="PRODUCT_ID"/>
+            </Annotations>
+            <Annotations Target="CatalogService.CHAR_NUMVAL1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="CHAR_NUM"/>
+                            <PropertyValue Property="Value" Path="CHAR_NUM"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="CHAR_NUMVAL"/>
+                            <PropertyValue Property="Value" Path="CHAR_NUMVAL"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="CHARVAL_NUM"/>
+                            <PropertyValue Property="Value" Path="CHARVAL_NUM"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="CHAR_NUMVALDESC"/>
+                            <PropertyValue Property="Value" Path="CHAR_NUMVALDESC"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="GeneratedGroup1">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="CHAR_NUM"/>
+                                    <PropertyValue Property="Value" Path="CHAR_NUM"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="CHAR_NUMVAL"/>
+                                    <PropertyValue Property="Value" Path="CHAR_NUMVAL"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="CHARVAL_NUM"/>
+                                    <PropertyValue Property="Value" Path="CHARVAL_NUM"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="CHAR_NUMVALDESC"/>
+                                    <PropertyValue Property="Value" Path="CHAR_NUMVALDESC"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="GeneratedFacet1"/>
+                            <PropertyValue Property="Label" String="General Information"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneratedGroup1"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="CatalogService.Countries" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="CatalogService.Countries/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="CatalogService.Countries/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="CatalogService.Countries/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Text" Path="name"/>
+                <Annotation Term="Common.Label" String="Country/Region Code"/>
+            </Annotations>
+            <Annotations Target="CatalogService.Countries_texts/locale" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Language Code"/>
+            </Annotations>
+            <Annotations Target="CatalogService.Countries_texts/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="CatalogService.Countries_texts/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="CatalogService.Countries_texts/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Text" Path="name"/>
+                <Annotation Term="Common.Label" String="Country/Region Code"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
